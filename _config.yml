@@ -1,0 +1,16 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+
+excerpt_separator: <!--more-->    
+
+permalink : /post/:title
+
+# markdown to use
+markdown: redcarpet
+pygments: true
+
+# Site Defaults 
+domainurl:          'http://www.rmgx.in'
+baseurl:            ''
+blogDomainUrl:      'http://blog.rmgx.in'

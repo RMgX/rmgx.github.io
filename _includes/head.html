@@ -1,0 +1,59 @@
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="cache-control" content="public"/>
+    
+    {% if  page.title == "" %}
+       {% capture title %} RMgX Blogs {% endcapture %}
+    {% else %}
+       {% capture title %} RMgX Blogs | {{ page.title }}  {% endcapture %}
+    {% endif %}
+    
+    
+    <title>{{title}}</title>
+    
+    {% if page.tags == ""  %}
+      <meta name="keywords" content="Innvoation, Agile, Evolutionary, Data-Driven, RMgX, Experience Sharing, Consulting, Solutions"/>
+    {% else %}
+      <meta name="keywords" content="RMgX Blog, {{page.tags | join: ', ' }}"/>
+    {% endif %}
+    
+    {% if page.excerpt != ""  %}
+    <meta name="description" content="{{ page.excerpt | strip_html | truncatewords: 20 }}"/>
+    {% else %}
+	<meta name="description" content="A new breed of technology focused innovation firm working on innovative solutions. A firm which is - Agile, Evolutionary, Data Driven"/>
+    {% endif %}
+    
+	<meta name="revisit-after" content="30 days"/>
+	<meta name="distribution" content="web"/>
+	<meta name="ROBOTS" content="INDEX, FOLLOW"/>
+
+    <!-- social tags -->
+    <meta property="og:site_name" content="RMgX" />
+	<meta property="og:url" content="{{ page.url | prepend: site.blogDomainUrl }}" />
+    <meta property="og:type" content="article" />
+	<meta property="og:title" content="{{title}}" />
+    {% if page.excerpt != ""  %}
+    <meta name="og:description" content="{{ page.excerpt | strip_html | truncatewords: 20 }}"/>
+    {% else %}
+	<meta name="og:description" content="A new breed of technology focused innovation firm working on innovative solutions. A firm which is - Agile, Evolutionary, Data Driven"/>
+    {% endif %}
+
+    {% if page.image.url != ""  %}
+    <meta property="og:image" content="{{site.blogDomainUrl}}{{ page.image.url }}" />
+    {% else %}
+	<meta property="og:image" content="http://www.rmgx.in/img/logo.png" />
+    {% endif %}
+    
+    <meta property="fb:app_id" content="768541363275360"/>
+    
+    <!-- Fav icons -->
+	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+	
+	<link rel="stylesheet" href="/css/final.css" />
+	<link rel=”publisher” href=”https://www.linkedin.com/company/rmgx“/>  
+    
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>

@@ -1,0 +1,43 @@
+<section class="content blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="blog_large" id="paginateblogs">
+                    {% assign thisCategory = page.categoryName | downcase %}
+                    {% for post in site.posts %}
+                    {% for category in post.categories %}
+                    {% if category | downcase == thisCategory %}
+                    <article class="post">
+                        {% if post.image.url != ""  %}
+                        <figure class="post_img">
+                            <a href="#">
+                                <img src="{{post.image.url}}" alt="{{post.image.alttext}}">
+                            </a>
+                        </figure>
+                        {% endif %}
+                        
+                        <div class="post_date">
+                            <span class="day">{{ post.date | date: '%d' }}</span> <span class="month">{{ post.date | date: '%b' }}</span>
+                        </div>
+                        <div class="post_content">
+                            <div class="post_meta">
+                                <h2>
+                                        <a href="{{ post.url }}">{{ post.title }}</a>
+                                    </h2>
+                                <div class="metaInfo">
+                                    <span><i class="fa fa-calendar"></i> {{ post.date | date: "%Y-%m-%d"  }}</span> <span> <i class="fa fa-user"></i>By {{ post.author }}</span> <span> <i class="fa fa-tag"></i>{{post.tags | join: ', ' }} </span>
+                                </div>
+                            </div>
+                            {{ post.excerpt }}
+                            <a class="btn btn-small btn-default" href="{{ post.url }}">Read More &nbsp; &nbsp;<i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </article>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% include rightbar.html %}
+        </div>
+    </div>
+</section>

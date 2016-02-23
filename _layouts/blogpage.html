@@ -1,0 +1,106 @@
+---
+layout: default
+---
+
+<section class="wrapper">
+    <section class="page_head">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h2>Blog Post : {{page.title}}</h2>
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li>You are here:</li>
+                            <li><a href="{{ site.domainurl }}">Home</a></li>
+                            <li><a href="/">Blogs</a></li>
+                            <li>Blog Post</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                    <div class="blog_single">
+                        <article class="post">
+                            {% if post.image.url != ""  %}
+                             <figure class="post_img">
+                                <a href="#">
+                                    <img src="{{post.image.url}}" alt="{{post.image.alttext}}">
+                                </a>
+                            </figure>
+                            {% endif %}
+                            <div class="post_date">
+                                <span class="day">{{ page.date | date: '%d' }}</span> <span class="month">{{ page.date | date: '%b' }}</span>
+                            </div>
+                            <div class="post_content">
+                                <div class="post_meta">
+                                    <h2>
+										{{page.title}}
+								    </h2>
+                                    <div class="metaInfo">
+                                        <span><i class="fa fa-calendar"></i>{{ page.date | date: "%Y-%m-%d"  }}</span>
+                                        <span><i class="fa fa-user"></i>By {{ page.author }}</span>
+                                        <span><i class="fa fa-tag"></i>	{{page.tags | join: ', '}} </span>
+                                    </div>
+                                </div>
+                                 {{ content }}
+                            </div>
+                            <ul class="shares">
+                                <li class="shareslabel">
+                                    <h3>Share This Article</h3></li>
+                                <li>
+                                    <a class="linkedin" href="http://www.linkedin.com/shareArticle?url={{site.blogDomainUrl}}{{page.url}}]&title={{page.title}}" data-placement="bottom" data-toggle="tooltip" title="LinkedIn" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="facebook" href="https://www.facebook.com/sharer.php?u={{site.blogDomainUrl}}{{page.url}}" data-placement="bottom" data-toggle="tooltip" title="Facebook" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="twitter" href="https://twitter.com/share?url={{site.blogDomainUrl}}{{page.url}}&text={{page.title}}&hashtags={{page.tags | join: '# '}}" data-placement="bottom" data-toggle="tooltip" title="Twitter" target="_blank"></a>
+                                </li>
+                                <li>
+                                    <a class="gplus" href="https://plus.google.com/share?url={{site.blogDomainUrl}}{{page.url}}" data-placement="bottom" data-toggle="tooltip" title="Google Plus" target="_blank"></a>
+                                </li>
+                            </ul>
+                        </article>
+                    </div>
+                    <div class="about_author">
+                        <div class="author_desc">
+                            {% assign author = site.data.people[page.author] %}
+                            <img src="{{author.profileImagePath}}" alt="{{author.name}}">
+                            <ul class="author_social">
+                                <li><a class="linkedin" href="{{author.linkedinProfileUrl}}" target="_blank" data-placement="top" data-toggle="tooltip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="author_bio">
+                            <h3 class="author_name"><a href="">{{author.name}}</a></h3>
+                            <h5>{{author.title}}</h5>
+                            <p class="author_det">
+                                {{author.bio}}
+                            </p>
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    {% if page.previous.url %}
+                    <a class="btn btn-small btn-default" href="{{page.previous.url}}"><i class="fa fa-angle-left">&nbsp; &nbsp {{page.previous.title}}  </i></a>
+                    {% else %}
+                    <a class="btn btn-small btn-default" href="#" onclick="window.history.back();return false;"><i class="fa fa-angle-left">&nbsp; &nbsp Back</i></a>
+                    
+                    {% endif %}            
+                    {% if page.next.url %}
+                    <a class="btn btn-small btn-default" href="{{page.next.url}}">{{page.next.title}} &nbsp; &nbsp <i class="fa fa-angle-right"></i></a>
+                    {% endif %}
+                </div>
+                {% include rightbar.html %}
+            </div>
+            <!--/.row-->
+        </div>
+        <!--/.container-->
+    </section>
+
+</section>
+<!--end wrapper-->

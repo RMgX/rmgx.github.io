@@ -1,0 +1,69 @@
+<!--Sidebar Widget-->
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="sidebar_widget">
+        <div class="sw_categories">
+			<div class="sw_title">
+				<h4>Categories</h4>
+			    <div class="gDot"></div>
+            </div>
+            <ul class="arrows_list">
+                {% assign categories_list = site.categories %}  
+                {% if categories_list.first[0] == null %}
+                    {% for category in categories_list %} 
+                        <li><a href="/category/{{ category | capitalize}}"><i class="fa fa-angle-right"></i>{{ category | capitalize }} <span>({{ site.categogies[category].size }})</span></a></li>
+                    {% endfor %}
+                {% else %}
+                    {% for category in categories_list %} 
+                        <li><a href="/category/{{ category[0] | capitalize}}"><i class="fa fa-angle-right"></i>{{ category[0] | capitalize }} <span>({{ category[1].size }})</span></a></li>
+                    {% endfor %}
+                {% endif %}
+                {% assign categories_list = nil %}
+            </ul>
+        </div>
+        <div class="sw_about">
+            <div class="sw_title">
+                <h4>Recent</h4>
+                <div class="gDot"></div>
+            </div>
+            <ul class="arrows_list">
+            {% for post in site.posts limit:10 %}
+                <li>
+                    <a href="{{ post.url | prepend: site.baseurl }}"><i class="fa fa-angle-right"></i>{{ post.title }}</a>
+                </li>
+            {% endfor %}
+             </ul>
+        </div>
+        
+       <div class="sw_tags">
+            <div class="sw_title">
+                <h4>Tags</h4>
+                <div class="gDot"></div>
+            </div>
+            <ul class="tags">
+             {% for tag in site.tags %} 
+                <li><a href="/tags/{{ tag | first | slugize }}">{{ tag | first }}</a></li> 
+              {% endfor %}
+           </ul>
+        </div>
+        
+        <div class="sw_archives">
+            <div class="sw_title">
+			     <h4>Archives</h4>
+				  <div class="gDot"></div>
+            </div>
+			<ul class="archives_list">
+                {% for post in site.posts %}
+                    {% unless post.next %}
+                        <li><a href="/archive/{{ post.date | date: '%B-%Y'}}"><i class="fa fa-angle-right"></i> {{ post.date | date: '%Y %B' }}</a></li>
+                    {% else %}
+                        {% capture year %}{{ post.date | date: '%Y %b' }}{% endcapture %}
+                        {% capture nyear %}{{ post.next.date | date: '%Y %b' }}{% endcapture %}
+                        {% if year != nyear %}
+                            <li><a href="archive/{{ post.date | date: '%B-%Y'}}"><i class="fa fa-angle-right"></i> {{ post.date | date: '%Y %B' }}</a></li>
+                        {% endif %}
+	                {% endunless %}
+                {% endfor %}
+            </ul>    
+        </div>
+    </div>
+</div>
