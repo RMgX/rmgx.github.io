@@ -26,13 +26,7 @@ layout: default
                 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <div class="blog_single">
                         <article class="post">
-                            {% if post.image.url != ""  %}
-                             <figure class="post_img">
-                                <a href="#">
-                                    <img src="{{post.image.url}}" alt="{{post.image.alttext}}">
-                                </a>
-                            </figure>
-                            {% endif %}
+                           
                             <div class="post_date">
                                 <span class="day">{{ page.date | date: '%d' }}</span> <span class="month">{{ page.date | date: '%b' }}</span>
                             </div>
@@ -47,6 +41,13 @@ layout: default
                                         <span><i class="fa fa-tag"></i>	{{page.tags | join: ', '}} </span>
                                     </div>
                                 </div>
+								 {% if page.image.url != ""  %}
+								<figure class="post_img">
+									<a href="#">
+                                    <img src="{{page.image.url}}" alt="{{page.image.alttext}}">
+									</a>
+								</figure>
+								{% endif %}
                                  {{ content }}
                             </div>
                             <ul class="shares">

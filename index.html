@@ -10,17 +10,17 @@ title: Blogs
                 <div class="blog_large" id="paginateblogs">
                     {% for post in site.posts %}
                     <article class="post">
-                        {% if post.image.url != ""  %}
-                        <figure class="post_img">
-                            <a href="#">
-                                <img src="{{post.image.url}}" alt="{{post.image.alttext}}">
-                            </a>
-                        </figure>
-                        {% endif %}
-                        
+						{% if post.image.url != ""  %}
+							<figure class="post_img">
+								<a href="#">
+									<img src="{{post.image.url}}" alt="{{post.image.alttext}}">
+								</a>
+							</figure>
+						{% endif %}
                         <div class="post_date">
                             <span class="day">{{ post.date | date: '%d' }}</span> <span class="month">{{ post.date | date: '%b' }}</span>
                         </div>
+
                         <div class="post_content">
                             <div class="post_meta">
                                 <h2>
@@ -32,7 +32,7 @@ title: Blogs
                                     <span> <i class="fa fa-tag"></i>{{post.tags | join: ', ' }} </span>
                                 </div>
                             </div>
-                            {{ post.excerpt }}
+						    {{ post.excerpt }}
                             <a class="btn btn-small btn-default" href="{{ post.url }}">Read More &nbsp; &nbsp;<i class="fa fa-angle-right"></i></a>
                         </div>
                     </article>
