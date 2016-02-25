@@ -9,6 +9,7 @@ image:
  alttext : Facebook Reactions
 ---
 Facebook reactions are now live globally adding more expressions and options for people to enunciate their feelings on posts rather than the sole (insanely famous) "Like" button. Obviously it will complicate our lives in more than one ways especially for people for whom social validation and their perception on the social media realm matter a lot. I am sure in coming days we will hear some funny stories about spouses getting angry because their partner has just "Liked" their picture instead of "Loving" them. The degree of sentiment matters of course.. More than that it has impact on the industry as well...
+
 <!--more-->
 
 **Sentiment Analysis**
